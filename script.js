@@ -1,55 +1,46 @@
-console.log('🚀 Portfolio carregado com sucesso!');
+/* =========================================
+   1. CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
+   ========================================= */
+const body = document.body;
+let is24Hour = true;
 
 /* =========================================
-   1. GESTÃO DO TEMA (DARK MODE)
+   2. GESTÃO DO TEMA (DARK MODE)
    ========================================= */
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
-
-// Função para verificar preferência guardada ao iniciar
-function loadTheme() {
+function initTheme() {
+    const themeToggle = document.querySelector('.theme-toggle');
     const savedTheme = localStorage.getItem('theme');
+    
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
     }
-}
 
-// Evento de clique no botão de tema
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        
-        // Guardar a preferência
-        const isDarkMode = body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+    }
 }
 
 /* =========================================
-   2. RELÓGIO DIGITAL
+   3. RELÓGIO DIGITAL
    ========================================= */
-let is24Hour = true;
-let clockInterval;
-
-// Função principal de atualizar o tempo
 function updateClock() {
     const now = new Date();
-    
     let hours = now.getHours();
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
     
-    // Lógica 12h/24h
     if (!is24Hour) {
-        hours = hours % 12 || 12; // Transforma 0 em 12
+        hours = hours % 12 || 12;
     }
     
-    // Formatação (adicionar zero: 9 -> 09)
     const displayHours = String(hours).padStart(2, '0');
     const displayMinutes = String(minutes).padStart(2, '0');
     const displaySeconds = String(seconds).padStart(2, '0');
     
-    // Atualizar HTML (com verificação de segurança)
     const elHours = document.getElementById('hours');
     const elMinutes = document.getElementById('minutes');
     const elSeconds = document.getElementById('seconds');
@@ -59,166 +50,83 @@ function updateClock() {
     if (elSeconds) elSeconds.textContent = displaySeconds;
 }
 
-// Função para alternar formato
-function toggleFormat() {
-    is24Hour = !is24Hour;
-    localStorage.setItem('clockFormat', is24Hour ? '24' : '12');
-    updateClock(); // Atualiza logo para não esperar 1 seg
-    console.log(`Formato alterado para: ${is24Hour ? '24h' : '12h'}`);
-}
-
-// Carregar formato guardado
-function loadClockFormat() {
+function initClock() {
     const savedFormat = localStorage.getItem('clockFormat');
-    if (savedFormat) {
-        is24Hour = (savedFormat === '24');
+    if (savedFormat) is24Hour = (savedFormat === '24');
+
+    const formatBtn = document.getElementById('format-toggle');
+    if (formatBtn) {
+        formatBtn.addEventListener('click', () => {
+            is24Hour = !is24Hour;
+            localStorage.setItem('clockFormat', is24Hour ? '24' : '12');
+            updateClock();
+        });
     }
+
+    updateClock();
+    setInterval(updateClock, 1000);
 }
 
 /* =========================================
-   3. INICIALIZAÇÃO (QUANDO A PÁGINA CARREGA)
+   4. CONTADOR DE VISITAS
    ========================================= */
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Carregar Tema
-    loadTheme();
-
-    // 2. Configurar Relógio
-    loadClockFormat();
-    updateClock(); // Primeira chamada imediata
-    setInterval(updateClock, 1000); // Inicia o intervalo
-    
-    // 3. Configurar Botão do Relógio
-    const formatBtn = document.getElementById('format-toggle');
-    if (formatBtn) {
-        formatBtn.addEventListener('click', toggleFormat);
-    }
-
-    // 4. Atualizar o Ano no Footer automaticamente
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-    console.log('✅ Sistema inicializado corretamente.');
-
-    // ===== CONTADOR DE VISITAS =====
-
-// 1. Função para obter contagem atual
-function getVisitCount() {
-    // Buscar do localStorage (retorna string ou null)
-    const count = localStorage.getItem('visitCount');
-    
-    // Converter para número (ou 0 se não existir)
-    return count ? parseInt(count) : 0;
-}
-
-// 2. Função para incrementar visitas
-function incrementVisitCount() {
-    // Obter contagem atual
-    let count = getVisitCount();
-    
-    // Incrementar
-    count++;
-    
-    // Guardar nova contagem
-    localStorage.setItem('visitCount', count);
-    
-    // Guardar timestamp da visita
-    const now = new Date().toISOString();
-    localStorage.setItem('lastVisit', now);
-    
-    return count;
-}
-
-// 3. Função para atualizar o display
-function updateVisitDisplay() {
-    const count = getVisitCount();
-    
-    // Atualizar número
-    const countElement = document.getElementById('visit-count');
-    if (countElement) {
-        countElement.textContent = count;
-    }
-    
-    console.log(`📊 Visitas: ${count}`);
-}
-// 4. Função para formatar data
-function formatLastVisit() {
-    const lastVisitISO = localStorage.getItem('lastVisit');
-    
-    if (!lastVisitISO) {
-        return 'Primeira vez aqui! 🎉';
-    }
+function formatLastVisit(lastVisitISO) {
+    if (!lastVisitISO) return 'Primeira vez aqui! 🎉';
     
     const lastVisit = new Date(lastVisitISO);
-    const now = new Date();
-    
-    // Calcular diferença em milissegundos
-    const diff = now - lastVisit;
-    
-    // Converter para minutos/horas/dias
+    const diff = new Date() - lastVisit;
     const minutes = Math.floor(diff / 1000 / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
     
-    if (minutes < 1) return 'Há menos de 1 minuto';
-    if (minutes < 60) return `Há ${minutes} minuto${minutes > 1 ? 's' : ''}`;
-    if (hours < 24) return `Há ${hours} hora${hours > 1 ? 's' : ''}`;
+    if (minutes < 1) return 'Agora mesmo';
+    if (minutes < 60) return `Há ${minutes} min`;
+    if (hours < 24) return `Há ${hours}h`;
     return `Há ${days} dia${days > 1 ? 's' : ''}`;
 }
 
-// 5. Atualizar display da última visita
-function updateLastVisitDisplay() {
-    const lastVisitText = formatLastVisit();
-    
-    const lastVisitElement = document.getElementById('last-visit');
-    if (lastVisitElement) {
-        lastVisitElement.textContent = lastVisitText;
-    }
-}
-
-// 6. Função para inicializar o contador
 function initVisitCounter() {
-    // Incrementar visitas
-    incrementVisitCount();
-    
-    // Atualizar displays
-    updateVisitDisplay();
-    updateLastVisitDisplay();
-    
-    console.log('📊 Contador de visitas inicializado!');
-}
+    const countElement = document.getElementById('visit-count');
+    const lastVisitElement = document.getElementById('last-visit');
+    const resetBtn = document.getElementById('reset-counter');
 
-// 7. Executar quando página carrega
-document.addEventListener('DOMContentLoaded', () => {
-    initVisitCounter();
-    // ... outras inicializações
-});
+    // 1. Lógica de Incremento (Executa apenas uma vez ao carregar)
+    let count = parseInt(localStorage.getItem('visitCount')) || 0;
+    const lastVisitISO = localStorage.getItem('lastVisit');
 
-// 8. Função para resetar contador
-function resetVisitCounter() {
-    // Confirmar com utilizador
-    const confirm = window.confirm('Tens a certeza que queres resetar o contador?');
-    
-    if (confirm) {
-        // Limpar localStorage
-        localStorage.removeItem('visitCount');
-        localStorage.removeItem('lastVisit');
-        
-        // Atualizar displays
-        updateVisitDisplay();
-        updateLastVisitDisplay();
-        
-        console.log('🔄 Contador resetado!');
-        
-        // Feedback visual
-        alert('Contador resetado com sucesso!');
+    // Mostrar data da visita ANTERIOR antes de atualizar para a atual
+    if (lastVisitElement) lastVisitElement.textContent = formatLastVisit(lastVisitISO);
+
+    // Atualizar dados para a visita atual
+    count++;
+    localStorage.setItem('visitCount', count);
+    localStorage.setItem('lastVisit', new Date().toISOString());
+
+    if (countElement) countElement.textContent = count;
+
+    // 2. Lógica de Reset
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (window.confirm('Queres resetar as estatísticas?')) {
+                localStorage.removeItem('visitCount');
+                localStorage.removeItem('lastVisit');
+                location.reload(); 
+            }
+        });
     }
 }
 
-// 9. Event listener no botão
-const resetBtn = document.getElementById('reset-counter');
-if (resetBtn) {
-    resetBtn.addEventListener('click', resetVisitCounter);
-}
+/* =========================================
+   5. INICIALIZAÇÃO ÚNICA
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Sistema iniciado');
+    
+    initTheme();
+    initClock();
+    initVisitCounter();
+
+    // Ano do footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 });
