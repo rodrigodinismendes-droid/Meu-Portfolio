@@ -8,50 +8,61 @@
 }
 
 /* =========================================
-   2. VARIÁVEIS (PALETA DE CORES)
+   2. VARIÁVEIS (PALETA DE CORES DE VERÃO)
    ========================================= */
 :root {
     /* --- Cores da Marca --- */
-    --brand-primary: #f33900;    /* Coral Vibrante */
-    --brand-secondary: #f9fd1c;  /* Amarelo */
+    --brand-primary: #00b4d8;    /* Azul Piscina */
+    --brand-secondary: #ffb703;  /* Amarelo Solar */
     
-    /* Mapeamento para nomes genéricos (Correção de variáveis em falta) */
+    /* Mapeamento para nomes genéricos */
     --primary: var(--brand-primary); 
-    --danger: #ef4444;           /* Vermelho para erros/fechar */
+    --danger: #ef4444;           
     
     /* --- Modo Claro (Padrão) --- */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f3f4f6;     /* Cinza muito claro */
-    --text-primary: #1f2937;     /* Cinza muito escuro */
-    --text-secondary: #6b7280;   /* Cinza médio */
-    --accent: #6366f1;           /* Indigo */
-    --border: #e5e7eb;
+    --bg-primary: #f0f9ff;       /* Azul Céu muito claro */
+    --bg-secondary: #ffffff;     
+    --text-primary: #075985;     /* Azul Marinho */
+    --text-secondary: #0ea5e9;   /* Azul Verão */
+    --accent: #fb8500;           /* Laranja Areia */
+    --border: #bae6fd;
     
     /* Utilitários de Cor */
     --white: #ffffff;
-    --gray: #9ca3af;
-    --light: #e5e7eb;
-    --dark: #374151;
-    --dark-fixed: #ffae00;       /* Footer */
+    --gray: #94a3b8;
+    --light: #e0f2fe;
+    --dark: #0c4a6e;
+    --dark-fixed: #ffb703;       /* Footer Amarelo Solar */
     
     /* Layout */
     --spacing: 1rem;
 }
 
 /* =========================================
-   3. MODO ESCURO
+   3. MODO ESCURO (VERSÃO GALÁXIA PREMIUM)
    ========================================= */
 body.dark-mode {
-    --bg-primary: #1f2937;       /* Cinza escuro */
-    --bg-secondary: #111827;     /* Quase preto */
-    --text-primary: #f9fafb;     /* Branco sujo */
-    --text-secondary: #d1d5db;   /* Cinza claro */
-    --accent: #818cf8;
-    --border: #374151;
+    /* Cores de Marca: Tons de Nebulosa e Radiação Cósmica */
+    --brand-primary: #7b2ff7;    /* Roxo Elétrico */
+    --brand-secondary: #240046;  /* Ultra Violeta Profundo */
+    --primary: #b79ced;          /* Lilás Neon */
+
+    /* Fundo: Profundidade do Vácuo */
+    --bg-primary: #050505;       /* O preto mais profundo */
+    --bg-secondary: #0f0c29;     /* Azul Noite Cósmico */
     
-    /* Ajustes nas utilitárias para modo escuro */
-    --light: #374151;
-    --dark: #f3f4f6;
+    /* Tipografia: Luz Estelar e Fluorescência */
+    --text-primary: #f8f7ff;     /* Branco Puro Estelar */
+    --text-secondary: #9d4edd;   /* Roxo Médio */
+    
+    /* Destaques e Bordas: Energia de Plasma */
+    --accent: #00f5d4;           /* Turquesa Neon (Contraste Perfeito) */
+    --border: #3c096c;           /* Borda de Nebulosa */
+    
+    /* Ajustes nas utilitárias: Camadas de Escuridão */
+    --light: #161a1d;
+    --dark: #ffffff;
+    --dark-fixed: #02010a;       /* Footer Totalmente Negro */
 }
 
 /* =========================================
@@ -151,14 +162,13 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
-/* Search Box */
 .search-box input {
     padding: 12px 20px;
     border: 2px solid var(--border);
     border-radius: 25px;
     width: 300px;
     font-size: 1em;
-    background-color: var(--bg-primary); /* Adaptável ao tema */
+    background-color: var(--bg-primary); 
     color: var(--text-primary);
     transition: border-color 0.3s;
 }
@@ -168,7 +178,6 @@ nav a:hover {
     border-color: var(--primary);
 }
 
-/* Filter Buttons */
 .filter-buttons {
     display: flex;
     gap: 10px;
@@ -178,7 +187,7 @@ nav a:hover {
 .filter-btn {
     padding: 10px 20px;
     border: 2px solid var(--border);
-    background: var(--bg-primary); /* Adaptável ao tema */
+    background: var(--bg-primary); 
     color: var(--text-primary);
     border-radius: 25px;
     cursor: pointer;
@@ -203,7 +212,7 @@ nav a:hover {
     border-radius: 10px;
     font-size: 0.85em;
     margin-left: 5px;
-    color: inherit; /* Herda a cor do botão */
+    color: inherit; 
 }
 
 .filter-btn.active .count {
@@ -221,7 +230,7 @@ nav a:hover {
 }
 
 .project-card {
-    background-color: var(--bg-secondary); /* Corrigido para suportar Dark Mode */
+    background-color: var(--bg-secondary); 
     color: var(--text-primary);
     border: 1px solid var(--border);
     border-radius: 15px;
@@ -235,7 +244,7 @@ nav a:hover {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 8px 25px rgba(123, 47, 247, 0.3); /* Glow do roxo elétrico */
 }
 
 .project-card img {
@@ -265,7 +274,7 @@ nav a:hover {
 }
 
 .project-description {
-    color: var(--text-secondary); /* Corrigido para usar variável */
+    color: var(--text-secondary); 
     margin-bottom: 15px;
 }
 
@@ -276,7 +285,7 @@ nav a:hover {
 }
 
 .tag {
-    background: var(--border); /* Ajustado para variável existente */
+    background: var(--border); 
     color: var(--text-primary);
     padding: 4px 10px;
     border-radius: 10px;
@@ -288,7 +297,7 @@ nav a:hover {
     padding: 60px 20px;
     color: var(--text-secondary);
     font-size: 1.2em;
-    grid-column: 1 / -1; /* Ocupa toda a largura da grid */
+    grid-column: 1 / -1; 
 }
 
 /* =========================================
@@ -323,7 +332,7 @@ nav a:hover {
 
 .format-toggle {
     background: var(--accent);
-    color: white;
+    color: #000; /* Texto preto para contraste no turquesa */
     border: none;
     padding: 0.5rem 1.5rem;
     border-radius: 25px;
@@ -365,7 +374,7 @@ nav a:hover {
 }
 
 .reset-btn:hover {
-    background: #dc2626; /* Versão mais escura do vermelho */
+    background: #dc2626; 
     transform: translateY(-2px);
 }
 
@@ -375,13 +384,13 @@ nav a:hover {
 .modal {
     display: none;
     position: fixed;
-    z-index: 2000; /* Maior que o theme-toggle */
+    z-index: 2000; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px); /* Efeito moderno */
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px); 
 }
 
 .modal.active {
@@ -391,7 +400,7 @@ nav a:hover {
 }
 
 .modal-content {
-    background: var(--bg-primary); /* Adaptável ao tema */
+    background: var(--bg-primary); 
     color: var(--text-primary);
     padding: 30px;
     border-radius: 20px;
@@ -400,7 +409,8 @@ nav a:hover {
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
 }
 
 .modal-close {
@@ -435,14 +445,13 @@ nav a:hover {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.3);
 }
 
 .theme-toggle:hover {
     transform: scale(1.1);
 }
 
-/* Ícones do botão de tema */
 .icon-light,
 .icon-dark {
     position: absolute;
@@ -464,13 +473,12 @@ footer {
 }
 
 /* =========================================
-   12. RESPONSIVE
+   12. RESPONSIVE & ANIMATIONS
    ========================================= */
 @media (min-width: 768px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
     .hero h2 {
         font-size: 3rem;
     }
@@ -481,65 +489,31 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* Animação ao renderizar cards */
-.project-card {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-@keyframes fadeInUp {
-    from {
+    .project-card {
+        animation: fadeInUp 0.5s ease forwards;
         opacity: 0;
-        transform: translateY(30px);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .project-card:nth-child(5) { animation-delay: 0.5s; }
+    .project-card:nth-child(6) { animation-delay: 0.6s; }
 }
 
-/* Delay progressivo para cada card */
-.project-card:nth-child(1) { animation-delay: 0.1s; }
-.project-card:nth-child(2) { animation-delay: 0.2s; }
-.project-card:nth-child(3) { animation-delay: 0.3s; }
-.project-card:nth-child(4) { animation-delay: 0.4s; }
-.project-card:nth-child(5) { animation-delay: 0.5s; }
-.project-card:nth-child(6) { animation-delay: 0.6s; }
-
-/* Modal Overlay */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s ease;
-}
-
-.modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Modal Content */
-.modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 800px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    animation: slideUp 0.4s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
+/* Reuso das animações para o Modal */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -551,31 +525,6 @@ footer {
     }
 }
 
-/* Close Button */
-.modal-close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 2.5em;
-    cursor: pointer;
-    color: var(--gray);
-    line-height: 1;
-    transition: all 0.3s;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.modal-close:hover {
-    background: var(--danger);
-    color: white;
-    transform: rotate(90deg);
-}
-
-/* Modal Body */
 #modal-body h2 {
     color: var(--primary);
     margin-bottom: 10px;
@@ -601,7 +550,7 @@ footer {
 }
 
 .modal-section h3 {
-    color: var(--dark);
+    color: var(--text-primary);
     margin-bottom: 15px;
     border-left: 4px solid var(--primary);
     padding-left: 15px;
@@ -622,7 +571,7 @@ footer {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--success);
+    color: var(--accent); 
     font-weight: bold;
 }
 
@@ -633,7 +582,7 @@ footer {
 }
 
 .tech-badge {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
@@ -652,9 +601,8 @@ footer {
 }
 
 .modal-link:hover {
-    background: var(--secondary);
+    background: var(--accent);
+    color: #000;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-
+    box-shadow: 0 4px 12px rgba(0, 245, 212, 0.4);
 }
