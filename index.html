@@ -27,41 +27,60 @@
 
     <section id="about" class="about">
         <h2>Sobre Mim</h2>
-        <p>Chamo-me Rodrigo e tenho 18 anos.</p>
+        <p>Chamo-me Rodrigo e tenho 18 anos. Atualmente estou a desenvolver o meu projeto final (PAP).</p>
 
         <div class="clock-container">
             <div class="clock">
                 <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
             </div>
-            <button id="format-toggle" class="format-toggle">12h/24h</button>
+            <button id="format-toggle" class="format-toggle">Alternar 12h/24h</button>
         </div>
 
-         <!-- CONTADOR DE VISITAS -->
-    <div class="visit-counter">
-        <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
-        <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
-        <button id="reset-counter" class="reset-btn">🔄 Reset</button>
-    </div>
-    
+        <div class="visit-counter">
+            <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
+            <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
+            <button id="reset-counter" class="reset-btn">🔄 Reset Estatísticas</button>
+        </div>
     </section>
 
     <section id="projects" class="projects">
-        <h2>Projetos</h2>
-        <div class="projects-grid">
-            <article class="project-card">
-                <h3>Projeto 1</h3>
-                <p>Descrição breve...</p>
-            </article>
+        <h2>Meus Projetos</h2>
+        
+        <div class="projects-controls">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                    Todos <span class="count">0</span>
+                </button>
+                <button class="filter-btn" data-filter="web">
+                    Web <span class="count">0</span>
+                </button>
+                <button class="filter-btn" data-filter="mobile">
+                    Mobile <span class="count">0</span>
+                </button>
+                <button class="filter-btn" data-filter="design">
+                    Design <span class="count">0</span>
+                </button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="🔍 Pesquisar projetos...">
+            </div>
+        </div>
+        
+        <div id="projects-grid" class="projects-grid"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <p>😕 Nenhum projeto encontrado para esta pesquisa.</p>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <h2>Contacto</h2>
-        <p>Em breve terás um formulário aqui!</p>
+        <p>Tens alguma proposta ou dúvida? Em breve terás um formulário aqui!</p>
     </section>
 
     <footer>
-        <p>© <span id="year"></span> Rodrigo. Feito com Love e carinho ✌️</p>
+        <p>© <span id="year"></span> Rodrigo. Feito com Love and carinho ✌️</p>
     </footer>
 
     <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
@@ -69,7 +88,36 @@
         <span class="icon-dark">🌙</span>
     </button>
 
-    <script src="script.js"></script>
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-header">
+                <h2 id="modal-title">Título do Projeto</h2>
+                <img id="modal-image" src="" alt="Preview" style="width: 100%; border-radius: 10px; margin: 15px 0;">
+            </div>
+            <div id="modal-body">
+                <p id="modal-description">Descrição detalhada aqui...</p>
+                
+                <div style="margin-top: 20px;">
+                    <h3>Funcionalidades:</h3>
+                    <ul id="modal-features"></ul>
+                </div>
 
+                <div style="margin-top: 20px;">
+                    <h3>Tecnologias:</h3>
+                    <div id="modal-tech" class="project-tags"></div>
+                </div>
+
+                <div style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9em;">
+                    Data: <span id="modal-date"></span>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <a id="modal-link" href="#" target="_blank" class="format-toggle" style="text-decoration: none; display: inline-block;">Ver Projeto Live / GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
