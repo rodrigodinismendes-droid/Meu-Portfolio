@@ -39,30 +39,30 @@
 }
 
 /* =========================================
-   3. MODO ESCURO (VERSÃO GALÁXIA PREMIUM)
+   3. MODO ESCURO (VERSÃO GALÁXIA ULTRA)
    ========================================= */
 body.dark-mode {
-    /* Cores de Marca: Tons de Nebulosa e Radiação Cósmica */
-    --brand-primary: #7b2ff7;    /* Roxo Elétrico */
-    --brand-secondary: #240046;  /* Ultra Violeta Profundo */
-    --primary: #b79ced;          /* Lilás Neon */
+    /* Cores de Marca: Supernova & Aurora */
+    --brand-primary: #8b5cf6;    /* Violeta Vibrante */
+    --brand-secondary: #d946ef;  /* Fúcsia Espacial */
+    --primary: #a78bfa;          /* Lilás Suave */
 
-    /* Fundo: Profundidade do Vácuo */
-    --bg-primary: #050505;       /* O preto mais profundo */
-    --bg-secondary: #0f0c29;     /* Azul Noite Cósmico */
+    /* Fundo: Espaço Profundo com Contraste de Camadas */
+    --bg-primary: #020617;       /* Azul Noite Profundo (Melhor que preto puro) */
+    --bg-secondary: #0f172a;     /* Azul Ardósia (Cria profundidade nos cards) */
     
-    /* Tipografia: Luz Estelar e Fluorescência */
-    --text-primary: #f8f7ff;     /* Branco Puro Estelar */
-    --text-secondary: #9d4edd;   /* Roxo Médio */
+    /* Tipografia: Luz de Neon */
+    --text-primary: #f1f5f9;     /* Branco Gelo */
+    --text-secondary: #94a3b8;   /* Cinza Estelar */
     
-    /* Destaques e Bordas: Energia de Plasma */
-    --accent: #00f5d4;           /* Turquesa Neon (Contraste Perfeito) */
-    --border: #3c096c;           /* Borda de Nebulosa */
+    /* Destaques: Radiação de Quasar */
+    --accent: #22d3ee;           /* Ciano Elétrico */
+    --border: #1e293b;           /* Borda de Vácuo */
     
-    /* Ajustes nas utilitárias: Camadas de Escuridão */
-    --light: #161a1d;
-    --dark: #ffffff;
-    --dark-fixed: #02010a;       /* Footer Totalmente Negro */
+    /* Ajustes nas utilitárias: Sombras e Luzes */
+    --light: #1e293b;
+    --dark: #f8fafc;
+    --dark-fixed: #000000;       /* Footer Buraco Negro */
 }
 
 /* =========================================
@@ -73,7 +73,7 @@ body {
     line-height: 1.6;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -99,7 +99,7 @@ header {
     background-color: var(--bg-secondary);
     border-bottom: 1px solid var(--border);
     padding: var(--spacing);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -123,11 +123,12 @@ nav a {
     text-decoration: none;
     color: var(--text-primary);
     font-weight: 500;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
 
 nav a:hover {
     color: var(--brand-primary);
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
 }
 
 /* =========================================
@@ -142,6 +143,8 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero h2 {
@@ -168,14 +171,15 @@ nav a:hover {
     border-radius: 25px;
     width: 300px;
     font-size: 1em;
-    background-color: var(--bg-primary); 
+    background-color: var(--bg-secondary); 
     color: var(--text-primary);
-    transition: border-color 0.3s;
+    transition: all 0.3s;
 }
 
 .search-box input:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.2);
 }
 
 .filter-buttons {
@@ -187,7 +191,7 @@ nav a:hover {
 .filter-btn {
     padding: 10px 20px;
     border: 2px solid var(--border);
-    background: var(--bg-primary); 
+    background: var(--bg-secondary); 
     color: var(--text-primary);
     border-radius: 25px;
     cursor: pointer;
@@ -198,12 +202,14 @@ nav a:hover {
 .filter-btn:hover {
     border-color: var(--primary);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .filter-btn.active {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
 }
 
 .filter-btn .count {
@@ -212,11 +218,6 @@ nav a:hover {
     border-radius: 10px;
     font-size: 0.85em;
     margin-left: 5px;
-    color: inherit; 
-}
-
-.filter-btn.active .count {
-    background: rgba(255,255,255,0.2);
 }
 
 /* =========================================
@@ -236,21 +237,28 @@ nav a:hover {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(123, 47, 247, 0.3); /* Glow do roxo elétrico */
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    filter: brightness(0.95);
+    transition: filter 0.3s;
+}
+
+.project-card:hover img {
+    filter: brightness(1.05);
 }
 
 .project-card-body {
@@ -285,19 +293,12 @@ nav a:hover {
 }
 
 .tag {
-    background: var(--border); 
+    background: var(--bg-primary); 
+    border: 1px solid var(--border);
     color: var(--text-primary);
     padding: 4px 10px;
     border-radius: 10px;
     font-size: 0.8em;
-}
-
-.no-results {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-secondary);
-    font-size: 1.2em;
-    grid-column: 1 / -1; 
 }
 
 /* =========================================
@@ -316,29 +317,31 @@ nav a:hover {
     font-weight: bold;
     font-family: 'Courier New', monospace;
     background: var(--bg-secondary);
-    color: var(--text-primary);
+    color: var(--primary);
     padding: 1.5rem 3rem;
     border-radius: 15px;
     border: 1px solid var(--border);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
     letter-spacing: 0.1em;
-}
-
-.clock span {
-    display: inline-block;
-    min-width: 0.6em;
-    text-align: center;
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
 }
 
 .format-toggle {
     background: var(--accent);
-    color: #000; /* Texto preto para contraste no turquesa */
+    color: #000;
     border: none;
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.8rem;
     border-radius: 25px;
     cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.format-toggle:hover {
+    box-shadow: 0 0 15px var(--accent);
+    transform: scale(1.05);
 }
 
 .visit-counter {
@@ -347,18 +350,13 @@ nav a:hover {
     border-radius: 15px;
     margin: 2rem 0;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
     color: var(--text-primary);
 }
 
 .visit-counter strong {
     color: var(--accent);
-    font-size: 1.5em;
-}
-
-.last-visit {
-    color: var(--text-secondary);
-    font-size: 0.9em;
+    font-size: 1.6em;
 }
 
 .reset-btn {
@@ -370,16 +368,11 @@ nav a:hover {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.reset-btn:hover {
-    background: #dc2626; 
-    transform: translateY(-2px);
+    transition: all 0.3s;
 }
 
 /* =========================================
-   10. MODAL
+   10. MODAL (GLASSMORPHISM EFFECT)
    ========================================= */
 .modal {
     display: none;
@@ -389,8 +382,8 @@ nav a:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(8px); 
+    background: rgba(2, 6, 23, 0.85); /* Overlay escuro */
+    backdrop-filter: blur(12px); 
 }
 
 .modal.active {
@@ -400,32 +393,33 @@ nav a:hover {
 }
 
 .modal-content {
-    background: var(--bg-primary); 
+    background: var(--bg-secondary); 
     color: var(--text-primary);
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 800px;
+    padding: 40px;
+    border-radius: 24px;
+    max-width: 850px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border);
 }
 
 .modal-close {
     position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 2em;
+    right: 25px;
+    top: 25px;
+    font-size: 2.5em;
     cursor: pointer;
     color: var(--text-secondary);
-    transition: color 0.3s;
+    transition: all 0.3s;
     line-height: 1;
 }
 
 .modal-close:hover {
     color: var(--danger);
+    transform: rotate(90deg);
 }
 
 /* =========================================
@@ -433,176 +427,99 @@ nav a:hover {
    ========================================= */
 .theme-toggle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 2px solid var(--accent);
+    color: var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     cursor: pointer;
-    font-size: 1.5em;
-    transition: all 0.3s ease;
+    font-size: 1.6em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.3);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
 }
-
-.icon-light,
-.icon-dark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-}
-
-body:not(.dark-mode) .icon-dark { opacity: 0; }
-body.dark-mode .icon-light { opacity: 0; }
 
 footer {
     background: var(--dark-fixed);
     color: var(--white);
     text-align: center;
-    padding: 2rem var(--spacing);
+    padding: 2.5rem var(--spacing);
     margin-top: auto;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 /* =========================================
    12. RESPONSIVE & ANIMATIONS
    ========================================= */
 @media (min-width: 768px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .hero h2 {
-        font-size: 3rem;
-    }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 1024px) {
-    .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
 
     .project-card {
-        animation: fadeInUp 0.5s ease forwards;
+        animation: fadeInUp 0.6s ease forwards;
         opacity: 0;
     }
 
     @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .project-card:nth-child(1) { animation-delay: 0.1s; }
     .project-card:nth-child(2) { animation-delay: 0.2s; }
     .project-card:nth-child(3) { animation-delay: 0.3s; }
     .project-card:nth-child(4) { animation-delay: 0.4s; }
-    .project-card:nth-child(5) { animation-delay: 0.5s; }
-    .project-card:nth-child(6) { animation-delay: 0.6s; }
 }
 
-/* Reuso das animações para o Modal */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#modal-body h2 {
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-.modal-category {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-}
-
-.modal-image {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 25px;
-}
-
-.modal-section {
-    margin: 25px 0;
-}
-
+/* Modal Internal Styling */
 .modal-section h3 {
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    border-left: 4px solid var(--primary);
-    padding-left: 15px;
-}
-
-.modal-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.modal-section ul li {
-    padding: 8px 0;
-    padding-left: 25px;
-    position: relative;
-}
-
-.modal-section ul li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent); 
-    font-weight: bold;
-}
-
-.modal-tech {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    color: var(--primary);
+    margin: 20px 0 15px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
 }
 
 .tech-badge {
     background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9em;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.85em;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .modal-link {
     display: inline-block;
     background: var(--primary);
     color: white;
-    padding: 12px 30px;
-    border-radius: 25px;
+    padding: 14px 35px;
+    border-radius: 50px;
     text-decoration: none;
-    margin-top: 20px;
+    font-weight: 700;
+    margin-top: 25px;
     transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3);
 }
 
 .modal-link:hover {
     background: var(--accent);
     color: #000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 245, 212, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(34, 211, 238, 0.4);
 }
