@@ -4,16 +4,16 @@
 const projects = [
     {
         id: 1,
-        title: 'E-commerce Website',
+        title: 'Site sobre a historia UFC',
         category: 'web',
         description: 'Loja online completa com carrinho de compras',
         image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=500&h=300&fit=crop',
         tags: ['HTML', 'CSS', 'JavaScript', 'API'],
         link: 'https://github.com/',
-        longDescription: 'Website de e-commerce completo com sistema de carrinho, checkout, e integração com API de pagamentos. Interface moderna e responsiva.',
-        features: ['Carrinho de compras', 'Sistema de pagamento', 'Área de utilizador', 'Gestão de produtos'],
+        longDescription: 'Conjuto de sites que contêm a hisotrias, Regras,Lutadores...',
+        features: ['Historia do UFC', 'Lutadores', 'Área de utilizador'],
         technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'LocalStorage', 'Fetch API'],
-        date: '2025-01'
+        date: '2025-04'
     },
     {
         id: 2,
