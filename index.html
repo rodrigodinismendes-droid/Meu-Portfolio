@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Rodrigo - Desenvolvedor Web">
-    <title>Rodrigo - Portfolio</title>
+    <meta name="description" content="Portfolio de Rodrigo Mendes - Desenvolvedor Web">
+    <title>O Meu Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<!-- Container de Toasts (adicionar antes de </body>) -->
-<div id="toast-container" class="toast-container"></div>
 <body>
-
+    <!-- HEADER -->
     <header>
         <nav>
-            <h1>Rodrigo</h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                <span class="icon-light">☀️</span>
+                <span class="icon-dark">🌙</span>
+            </button>
+            <h1>Rodrigo Mendes</h1>
             <ul>
                 <li><a href="#about">Sobre Mim</a></li>
                 <li><a href="#projects">Projetos</a></li>
@@ -21,81 +23,101 @@
             </ul>
         </nav>
     </header>
-
+ 
+    <!-- HERO / INTRO -->
     <section class="hero">
-        <h2>Olá! Sou o Rodrigo Mendes 👋</h2>
+        <h1>Olá sou o Rodrigo Mendes👋</h1>
         <p>Desenvolvedor Web | Estudante | Criativo</p>
     </section>
-
+ 
+    <!-- SOBRE MIM -->
     <section id="about" class="about">
         <h2>Sobre Mim</h2>
-        <p>Olá chamo-me Rodrigo, ando num curso de programção ,criei este portefolio para tentar melhorar e mostrar os meus projetos .</p>
-        
+        <p>Olá o meu nome é Rodrigo Mendes, tenho 18 anos, sou de um curso de programador de informatica.</p>
+        <!-- Aqui vão adicionar componentes interativos na próxima aula -->
+ 
+        <!-- RELÓGIO -->
         <div class="clock-container">
-            <div class="clock">
-                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-            </div>
-            <button id="format-toggle" class="format-toggle">Alternar 12h/24h</button>
+        <div class="clock">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
         </div>
-
+        <button id="format-toggle" class="format-toggle">12h/24h</button>
+        </div>
+        <!-- CONTADOR DE VISITAS -->
         <div class="visit-counter">
-            <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
-            <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
-            <button id="reset-counter" class="reset-btn">🔄 Reset Estatísticas</button>
+        <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
+        <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
+        <button id="reset-counter" class="reset-btn">🔄 Reset</button>
         </div>
     </section>
-
+ 
+    <!-- PROJETOS -->
     <section id="projects" class="projects">
-        <h2>Meus Projetos</h2>
-        
-        <div class="projects-controls">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">
-                    Todos <span class="count">0</span>
-                </button>
-                <button class="filter-btn" data-filter="web">
-                    Web <span class="count">0</span>
-                </button>
-                <button class="filter-btn" data-filter="mobile">
-                    Mobile <span class="count">0</span>
-                </button>
-                <button class="filter-btn" data-filter="design">
-                    Design <span class="count">0</span>
-                </button>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="🔍 Pesquisar projetos...">
-            </div>
+    <h2>Meus Projetos</h2>
+   
+    <!-- Barra de controlo (filtros + pesquisa) -->
+    <div class="projects-controls">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">
+                Todos <span class="count">0</span>
+            </button>
+            <button class="filter-btn" data-category="web">
+                Web <span class="count">0</span>
+            </button>
+            <button class="filter-btn" data-category="mobile">
+                Mobile <span class="count">0</span>
+            </button>
+            <button class="filter-btn" data-category="design">
+                Design <span class="count">0</span>
+            </button>
         </div>
-        
-        <div id="projects-grid" class="projects-grid"></div>
-        
+       
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Pesquisar projetos...">
+        </div>
+    </div>
+   
+    <!-- Grid onde os projetos vão aparecer -->
+    <div id="projects-grid" class="projects-grid">
+        <!-- Os cards serão inseridos aqui via JavaScript -->
+    </div>
+   
+    <!-- Mensagem quando não há resultados -->
         <div id="no-results" class="no-results" style="display: none;">
-            <p>😕 Nenhum projeto encontrado para esta pesquisa.</p>
+            <p>😕 Nenhum projeto encontrado</p>
         </div>
     </section>
-
+ 
+    <!-- Modal (fora da secção) -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <div id="modal-body">
+            <!-- Conteúdo do modal será inserido aqui -->
+            </div>
+        </div>
+    </div>
+ 
+    <!-- CONTACTO -->
     <section id="contact" class="contact">
-        <section id="contact" class="contact">
     <div class="section-header">
         <h2>📧 Entra em Contacto</h2>
         <p>Tens alguma questão ou projeto em mente? Envia-me uma mensagem!</p>
     </div>
-
+ 
     <div class="contact-container">
         <!-- Formulário -->
         <form id="contact-form" class="contact-form" novalidate>
-            
+           
             <!-- Nome -->
             <div class="form-group">
                 <label for="name">
                     Nome Completo <span class="required">*</span>
                 </label>
                 <div class="input-wrapper">
-                    <input 
-                        type="text" 
-                        id="name" 
+                    <input
+                        type="text"
+                        id="name"
                         name="name"
                         placeholder="O teu nome"
                         required
@@ -105,16 +127,16 @@
                 </div>
                 <span class="error-message"></span>
             </div>
-
+ 
             <!-- Email -->
             <div class="form-group">
                 <label for="email">
                     Email <span class="required">*</span>
                 </label>
                 <div class="input-wrapper">
-                    <input 
-                        type="email" 
-                        id="email" 
+                    <input
+                        type="email"
+                        id="email"
                         name="email"
                         placeholder="teu@email.com"
                         required
@@ -123,7 +145,21 @@
                 </div>
                 <span class="error-message"></span>
             </div>
-
+           
+            <!-- Adicionar campo telefone (opcional) -->
+             <div class="form-group">
+                <label for="phone">Telefone</label>
+                 <div class="input-wrapper">
+                     <input
+                         type="tel"
+                         id="phone"
+                        name="phone"
+                        placeholder="+35i xxx xxx xxx">
+                    <span class="input-icon"></span>
+                </div>
+                <span class="error-message"></span>
+            </div>
+ 
             <!-- Assunto -->
             <div class="form-group">
                 <label for="subject">
@@ -142,15 +178,15 @@
                 </div>
                 <span class="error-message"></span>
             </div>
-
+ 
             <!-- Mensagem -->
             <div class="form-group">
                 <label for="message">
                     Mensagem <span class="required">*</span>
                 </label>
                 <div class="input-wrapper">
-                    <textarea 
-                        id="message" 
+                    <textarea
+                        id="message"
                         name="message"
                         placeholder="Escreve aqui a tua mensagem..."
                         required
@@ -164,15 +200,15 @@
                     <span id="char-count">0</span> / 500 caracteres
                 </div>
             </div>
-
+ 
             <!-- Botão Submit -->
             <button type="submit" class="submit-btn" id="submit-btn">
                 <span class="btn-text">Enviar Mensagem</span>
                 <span class="btn-icon">📨</span>
             </button>
-
+ 
         </form>
-
+ 
         <!-- Info Adicional -->
         <div class="contact-info">
             <h3>Outras Formas de Contacto</h3>
@@ -182,63 +218,28 @@
             </div>
             <div class="info-item">
                 <span class="icon">📱</span>
-                <span>+351 xxx xxx xxx</span>
+                <span>+351 xxx xxx xxx </span>
             </div>
             <div class="info-item">
                 <span class="icon">📍</span>
                 <span>Lisboa, Portugal</span>
             </div>
-            
+           
             <div class="social-links">
                 <a href="#" target="_blank">GitHub</a>
                 <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
             </div>
         </div>
     </div>
-</section>
-       
     </section>
-
+    <!-- Container de Toasts -->
+    <div id="toast-container" class="toast-container"></div>
+    <!-- FOOTER -->
     <footer>
-        <p>© <span id="year"></span> Rodrigo. Feito com Love and carinho ✌️</p>
+        <p style="color: black; font-size: large; text-align: center;">© <span id="year"></span>Rodrigo. Feito com love and carinho</p>
     </footer>
-
-    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
-        <span class="icon-light">☀️</span>
-        <span class="icon-dark">🌙</span>
-    </button>
-
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div id="modal-header">
-                <h2 id="modal-title">Título do Projeto</h2>
-                <img id="modal-image" src="" alt="Preview" style="width: 100%; border-radius: 10px; margin: 15px 0;">
-            </div>
-            <div id="modal-body">
-                <p id="modal-description">Descrição detalhada aqui...</p>
-                
-                <div style="margin-top: 20px;">
-                    <h3>Funcionalidades:</h3>
-                    <ul id="modal-features"></ul>
-                </div>
-
-                <div style="margin-top: 20px;">
-                    <h3>Tecnologias:</h3>
-                    <div id="modal-tech" class="project-tags"></div>
-                </div>
-
-                <div style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9em;">
-                    Data: <span id="modal-date"></span>
-                </div>
-            </div>
-            <div style="margin-top: 30px;">
-                <a id="modal-link" href="#" target="_blank" class="format-toggle" style="text-decoration: none; display: inline-block;">Ver Projeto Live / GitHub</a>
-            </div>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
+ 
